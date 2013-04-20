@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 web = Flask (__name__)
+web.debug = True
 
 @web.route ("/")
 def start():
