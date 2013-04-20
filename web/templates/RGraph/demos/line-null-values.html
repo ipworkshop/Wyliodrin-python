@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A stepped Line chart with Trace effect</title>
+    
+    <meta name="description" content="A Line chart with null values" />
+</head>
+<body>
+
+    <h1>A Line chart with null values</h1>
+    
+    <p>
+        The null values are used to space out the data o that the quarters are easily distinguinshed.
+    </p>
+
+
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var data = [
+                        5,3,4,null,
+                        6,8,7,null,
+                        9,4,5,null,
+                        6,7,8
+                       ];
+    
+            var line = new RGraph.Line('cvs', data);
+            line.Set('chart.filled', true);
+            line.Set('chart.colors', ['black']);
+            line.Set('chart.fillstyle', ['#ddd']);
+            line.Set('chart.labels', [
+                                      'Jan','Feb','Mar','',
+                                      'Apr','May','Jun', '',
+                                      'Jul','Aug','Sep','',
+                                      'Oct','Nov', 'Dec']);
+            line.Set('chart.key.position.gutter.boxed', false);
+            line.Set('chart.shadow.blur', 3);
+            line.Set('chart.hmargin', 15);
+            line.Set('chart.gutter.bottom', 45);
+            line.Set('chart.background.grid.vlines', false);
+            line.Draw();
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

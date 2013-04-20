@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A Line chart with an interactive key</title>
+    
+    <meta name="description" content="A Line chart with an interactive key" />
+</head>
+<body>
+
+    <h1>A line chart with an interactive key</h1>
+
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var line = new RGraph.Line('cvs', [1,9,4,3,1,9,8,4,8,9,5,7, 8, 9, 7]);
+            line.Set('chart.background.grid.autofit.numvlines', 11);
+            line.Set('chart.labels', ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']);
+            line.Set('chart.key', ['John']);
+            line.Set('chart.key.interactive', true);
+            line.Set('chart.xaxispos', 'top');
+            line.Set('chart.linewidth', 2);
+            line.Set('chart.tickmarks', 'endcircle');
+            line.Set('chart.hmargin', 5);
+            line.Draw();
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

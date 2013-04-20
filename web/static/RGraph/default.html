@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>RGraph - Free HTML5 and JavaScript charts</title>
+
+    <link rel="stylesheet" href="css/website.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/animations.css" type="text/css" media="screen" />
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <script src="libraries/RGraph.common.core.js" ></script>
+    <script src="libraries/RGraph.common.dynamic.js" ></script>
+    <script src="libraries/RGraph.common.effects.js" ></script>
+    <script src="libraries/RGraph.common.tooltips.js" ></script>
+    <script src="libraries/RGraph.bar.js" ></script>
+    <script src="libraries/jquery.min.js" ></script>
+
+    <script>
+        window.onload = function ()
+        {
+            var bar = new RGraph.Bar('cvs_bar', [[45,-60],[-65,-30],[40,80],[59,-48]])
+                .Set('chart.colors', ['rgba(255, 176, 176, 0.5)', 'rgba(153, 208, 249,0.5)']) 
+                .Set('chart.labels', ['Luis', 'Kevin', 'John', 'Gregory'])
+                .Set('chart.tooltips', ['Luis','Luis','Kevin','Kevin','John','John','Gregory','Gregory'])
+                .Set('chart.tooltips.event', 'onmousemove')
+                .Set('chart.ymax', 100)
+                .Set('chart.ylabels.count', 4)
+                .Set('chart.numyticks', 8)
+                .Set('chart.strokestyle', '#ccc')
+                .Set('chart.hmargin.grouped', 2)
+                .Set('chart.units.pre', '£')
+                .Set('chart.gutter.left', 40)
+                .Set('chart.gutter.right', 15)
+                .Set('chart.xaxispos', 'center');
+            
+            RGraph.Effects.Fade.In(bar, {'duration': 250});
+            RGraph.Effects.jQuery.Expand(bar, {bounce: false});
+        }
+    </script>
+</head>
+<body>
+
+    <img src="images/title.png" width="666" height="69" alt="RGraph: Free HTML5 and Javascript charts" />
+    
+    <ul>
+        <li><a href="#demos">Demos of charts (local)</a></li>
+        <li><a href="#examples">Demos of charts</a></li>
+        <li><a href="#docs">The RGraph documentation</a></li>
+        <li><a href="#howtos">HOWTO guides</a></li>
+        <li><a href="#basic">Basic examples</a></li>
+        <li><a href="#changes">What's new?</a></li>
+        <li><a href="#free-license"><b>Free license</b></a></li>
+    </ul>
+
+    <canvas width="600" height="250" id="cvs_bar" style="float: right" class="animated rotateIn"></canvas>
+
+    <a name="demos"></a>
+    <h2>Demos <span>of charts (local)</span></h2>
+        <p>
+            Demos of some of the various charts and features provided by RGraph
+        </p>
+        
+        <p align="left">
+            <a href="./demos/"><b>Go to the demos (local) &raquo;</b></a>
+        </p>
+
+    <a name="examples"></a>
+    <h2>Demos <span>of Charts</span></h2>
+        <p>
+            Examples of various different types of charts along with sample code is available on the website:
+        </p>
+        
+        <p align="left">
+            <a href="http://www.rgraph.net/examples/index.html"><b>Go to the examples on rgraph.net &raquo;</b></a>
+        </p>
+
+    <a name="docs"></a>
+    <h2>Documentation <span>for charts</span></h2>
+        <p>
+            Documentation for for the charts is available here:
+        </p>
+        
+        <p align="left">
+            <a href="http://www.rgraph.net/docs/index.html"><b>Go to the documentation on rgraph.net &raquo;</b></a>
+        </p>
+    
+    <a name="howtos"></a>
+    <h2>HOWTO <span>guides</span></h2>
+        <p>
+            Straight-forward HOWTO guides that show you how to do common tasks are part of the
+            <a href="http://www.rgraph.net/docs/howto-index.html"><b>documentation</b></a>. They offer straight forward information
+            along with example code.
+        </p>
+    
+    <a name="basic"></a>
+    <h2>Basic <span>examples</span></h2>
+        <p>
+            <a href="http://www.rgraph.net/docs/basic-index.html"><b>The basic examples</b></a> show simple and stripped down examples of a few things.
+            If you're having trouble with the concepts these should help.
+        </p>
+    
+    <a name="changes"></a>
+    <h2>What's <span>new?</span></h2>
+        <p>
+            You can read about what's changed in the changelog and about backwards compatibility breaks (if you're upgrading)
+            in the BC file:
+        </p>
+        
+        <ul>
+            <li><a href="http://www.rgraph.net/docs/release-notes.html">Read the release notes on www.rgraph.net</a></li>
+            <li><a href="libraries/.CHANGELOG.txt">Changelog</a></li>
+            <li><a href="libraries/.BC.txt">Backwards compatibility breaks and notices</a></li>
+        </ul>
+    
+    <a name="free-license"></a>
+    <h2>Free <span>license</span></h2>
+        <img src="images/creative-commons-logo.png" width="64" height="31" alt="Creative Commons Attribution" align="left" style="margin-right: 10px; margin-top: 5px" />
+
+        <p>
+            Don't forget - RGraph is <b>free to use for all purposes</b> (such as commercial, personal, charity or educational) under the
+            <b>Creative Commons Attribution</b> license - so you must link back to the
+            <a href="http://www.rgraph.net" target="_blank">the RGraph website</a>. If you don't wish to link to the RGraph website
+            <a href="http://www.rgraph.net/license" target="_blank">
+                there are commercial licenses available.
+            </a>
+        </p>
+</body>
+</html>

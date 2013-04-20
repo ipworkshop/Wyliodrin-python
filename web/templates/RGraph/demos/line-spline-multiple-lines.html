@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="../libraries/jquery.min.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A curvy Line chart with multiple lines</title>
+    
+    <meta name="description" content="A curvy Line chart (a spline) that has multiple lines. It uses the Line chart Trace effect." />
+</head>
+<body>
+
+    <h1>A curvy Line chart with multiple lines</h1>
+
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var line = new RGraph.Line('cvs', [4,5,1,6,3,5,2], [7,7,8,6,2,1,1]);
+            line.Set('chart.curvy', true);
+            line.Set('chart.curvy.tickmarks', true);
+            line.Set('chart.curvy.tickmarks.fill', null);
+            line.Set('chart.curvy.tickmarks.stroke', '#aaa');
+            line.Set('chart.curvy.tickmarks.stroke.linewidth', 2);
+            line.Set('chart.curvy.tickmarks.size', 5);
+            line.Set('chart.linewidth', 3);
+            line.Set('chart.hmargin', 5);
+            line.Set('chart.labels', ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']);
+            line.Set('chart.tooltips', ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']);
+            line.Set('chart.tickmarks', 'circle');
+            RGraph.Effects.Line.jQuery.Trace(line);
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <meta name="description" content="n adjustable Meter chart" />
+</head>
+<body>
+
+    <h1>A Meter chart</h1>
+
+    <canvas id="cvs" width="600" height="250" style="border: 1px solid #ccc; border-radius: 15px">[No canvas support]</canvas>
+    <script>
+        window.onload = function ()
+        {
+            var meter = new RGraph.Meter('cvs', 0,100,75);
+            meter.Set('angles.start', PI + 0.5);
+            meter.Set('angles.end', TWOPI - 0.5);
+            meter.Set('linewidth.segments', 15);
+            meter.Set('text.size', 16);
+            meter.Set('strokestyle', 'white');
+            meter.Set('segment.radius.start', 175);
+            meter.Set('border', 0);
+            meter.Set('tickmarks.small.num', 0);
+            meter.Set('tickmarks.big.num', 0);
+            meter.Set('adjustable', true);
+            meter.Draw();
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

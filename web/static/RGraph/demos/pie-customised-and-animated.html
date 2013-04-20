@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>An animated customised Pie chart</title>
+    
+    <meta name="description" content="A Pie chart that has been animated using the RoundRobin effect" />
+</head>
+<body>
+
+    <h1>An animated and customised Pie chart</h1>
+
+    <canvas id="cvs" width="480" height="250" !style="border:1px solid #ccc">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var pie = new RGraph.Pie('cvs', [1750, 6250]);
+            pie.Set('chart.strokestyle', 'white');
+            pie.Set('chart.colors', ['#DDDF0D','#7798BF']);
+            pie.Set('chart.linewidth', 3);
+            pie.Set('chart.exploded', [15,]);
+            pie.Set('chart.shadow', true);
+            pie.Set('chart.shadow.offsetx', 0);
+            pie.Set('chart.shadow.offsety', 0);
+            pie.Set('chart.shadow.blur', 20);
+            pie.Set('chart.labels', ['Jerry']);
+            pie.Set('chart.labels.sticks', [true]);
+            pie.Set('chart.labels.sticks.length', 20);
+            RGraph.Effects.Pie.RoundRobin(pie);
+            //pie.Draw();
+        }
+    </script>
+
+    <p>        
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

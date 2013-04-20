@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A customised and adjustable Gauge chart</title>
+    
+    <meta name="description" content="A Gauge chart that is updated periodically by AJAX" />
+</head>
+<body>
+
+    <h1>A customised Gauge chart (with AJAX updating)</h1>
+    
+    <p>
+        This Gauge is much like the <a href="gauge03.html">last one</a> but with AJAX updating instead of click updating. Because
+        of the AJAX it only works when viewed online - which you can do <a href="http://www.rgraph.net/demos/gauge04.html">here</a>.
+    </p>
+
+    <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var gauge = new RGraph.Gauge('cvs', 0, 10, 7);
+            //gauge.Set('chart.angles.start', PI - (PI / 8));
+            //gauge.Set('chart.angles.end', TWOPI + (PI / 8));
+            gauge.Set('chart.border.outline', 'transparent');
+            gauge.Set('chart.needle.colors', ['red']);
+            gauge.Set('chart.needle.type', 'line');
+            gauge.Set('chart.needle.tail', true);
+            gauge.Set('chart.needle.size', 55);
+            gauge.Set('chart.centerpin.radius', 0.1);
+            gauge.Set('chart.title.top', 'Speed');
+            gauge.Set('chart.labels.centered', true);
+            gauge.Set('chart.labels.offset', 7);
+        
+            /**
+            * This draws a simple gray circle over the centerpin
+            */
+            function myCenterpin (obj)
+            {
+                // This circle becomes the border of the centerpin
+                obj.context.beginPath();
+                    obj.context.fillStyle = '#aaa';
+                    obj.context.arc(obj.centerx, obj.centery, 10, 0, TWOPI, false);
+                obj.context.fill();
+            }
+            RGraph.AddCustomEventListener(gauge, 'ondraw', myCenterpin);
+        
+            gauge.Draw();
+
+
+
+
+            var delay = 1500;
+
+
+
+
+            function myAJAXCallback()
+            {
+                /**
+                * The responseText is actually a comma separated list of numbers, but converting it to a number with parseInt()
+                * will change it so that it's just the first number
+                */
+                var data = parseInt(this.responseText);
+                
+                data /= 100;
+                data *= 10;
+                
+                gauge.value = data;
+                RGraph.Effects.Gauge.Grow(gauge);
+                
+                
+                // Make another AJAX call after the delay (which is in milliseconds)
+                setTimeout(function () {RGraph.AJAX('/getdata.html', myAJAXCallback);}, delay);
+            }
+
+
+
+
+            /**
+            * Make the AJAX call every so often (contolled by the delay variable)
+            */
+            setTimeout(function () {RGraph.AJAX('/getdata.html', myAJAXCallback);}, delay);
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

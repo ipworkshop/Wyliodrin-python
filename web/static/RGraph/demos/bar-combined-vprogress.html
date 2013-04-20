@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <meta name="description" content="A Bar chart that has been combined with the VProgress chart" />
+</head>
+<body>
+
+    <h1>Combined grouped Bar and VProgress chart</h1>
+    
+    <p>
+        A demo of the VProgress bar combined with a grouped Bar chart. It could be used to show different peoples stats over two years
+        for example. Red is one year, yellow is the previous.
+    </p>
+    
+    <canvas id="cvs" width="600" height="250"></canvas>
+        <script>
+            var people = ['Rob','Luis','Kinga'];
+            var bar = new RGraph.Bar('cvs', [[18,15,45],[21,23,41],[28,21,12],[21,15,38]]);
+            bar.Set('chart.labels', ['January','February','March','April']);
+            bar.Set('chart.hmargin', 20);
+            bar.Set('chart.hmargin.grouped', 2);
+            bar.Set('chart.highlight.fill', 'red');
+            bar.Set('chart.key', ['This year','Last year']);
+            bar.Set('chart.key.colors', ['red','yellow']);
+            bar.Set('chart.key.position', 'gutter');
+            bar.Set('chart.key.position.gutter.boxed', false);
+            bar.Set('chart.colors', ['rgba(0,0,0,0)']);
+            bar.Draw();
+
+            function DrawBottomAxis (obj)
+            {
+                var context = bar.context;
+                var x = bar.gutterLeft;
+                var y = bar.canvas.height - bar.gutterBottom;
+                var w = bar.canvas.width - bar.gutterLeft - bar.gutterRight
+                var h = 0;
+                context.strokeStyle = 'black';
+                context.strokeRect(x, y, w, h);
+            }     
+
+            /**
+            * Now create the VProgress bars
+            */
+            for (var i=0,j=0; i<bar.coords.length; ++i,++j) {
+                
+                if (i % 3 == 0) {
+                    j = 0;
+                }
+                
+                var coords = bar.coords[i];
+                
+                var vp = new RGraph.VProgress('cvs',0,100, [25,75]); // Could be percentages. Could also be exact values
+                vp.Set('chart.gutter.left', coords[0]);
+                vp.Set('chart.gutter.top', coords[1]);
+                vp.Set('chart.gutter.right', bar.canvas.width - (coords[0] + coords[2]) );
+                vp.Set('chart.gutter.bottom', 25);
+                vp.Set('chart.labels.count', 0);
+                vp.Set('chart.tickmarks', false);
+                vp.Set('chart.colors', ['yellow', 'rgba(255,0,0,0.5)']);
+                vp.Set('chart.strokestyle', 'rgba(0,0,0,0)');
+                vp.Set('chart.tooltips', [people[j],people[j]]);
+                vp.ondraw = DrawBottomAxis;
+                vp.Draw();
+            }
+        </script>
+        
+        <br />
+        
+</body>
+</html>

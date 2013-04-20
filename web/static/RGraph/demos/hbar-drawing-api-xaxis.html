@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.drawing.xaxis.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A Horizontal Bar chart example showing the XAxis drawing API object</title>
+    
+    <meta name="description" content="A Horizontal Bar chart where the XAxis is drawn using the drawing API" />
+</head>
+<body>
+
+    <h1>A Horizontal Bar chart example showing the XAxis drawing API object</h1>
+
+
+   <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+
+    <script>
+        window.onload = function ()
+        {
+
+            var hbar = new RGraph.HBar('cvs', [[80,64],[1,2],[11,12],[3,12],[5,7]]);
+            hbar.Set('gutter.left', 135);
+            hbar.Set('gutter.top', 35);
+            hbar.Set('labels', ['Improved','Worsened', 'No change - \r\n peoples perceptions\r\nare generally positive','No change - \r\n peoples perceptions\r\nare generally negative',"Don't know"]);
+            hbar.Set('colors', ['#F68B23','#164366']);
+            hbar.Set('ymax', 80);
+            hbar.Set('background.grid.hlines', false);
+            hbar.Set('noxaxis', true);
+            hbar.Set('noyaxis', true);
+            hbar.Set('xlabels', false);
+            hbar.Set('key', ['Non-disabled','Disabled']);
+            hbar.Set('key.position', 'gutter');
+            hbar.Set('key.position.gutter.boxed', false);
+            hbar.Set('key.position.y', 0);
+            hbar.Set('tooltips', ['A','B','C','D','E','F','G','H','I','J']);
+            //hbar.Set('yaxispos', 'center');
+            RGraph.Effects.HBar.Grow(hbar);
+            //hbar.Draw();
+
+           var xaxis = new RGraph.Drawing.XAxis('cvs', 35);
+           xaxis.Set('chart.gutter.left', hbar.Get('chart.gutter.left'));
+           xaxis.Set('chart.max', 80);
+           xaxis.Set('chart.align', 'top');
+           //xaxis.Set('yaxispos', 'center');
+           //xaxis.Set('scale.zerostart', false);
+           xaxis.Draw();
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

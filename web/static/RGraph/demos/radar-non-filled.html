@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.radar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>An non-filled Radar chart</title>
+
+    <meta name="description" content="A non-filled Radar chart with two data series" />
+</head>
+<body>
+
+    <h1>A non-filled Radar chart</h1>
+
+    <canvas id="cvs" width="500" height="400">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var radar3 = new RGraph.Radar('cvs', [8,7,6,7,8,6], [8,9,4,6,6,8]);
+            radar3.Set('chart.labels', ['', 'Barry', 'Gary','Dave','Paul','Rich']);
+            radar3.Set('chart.tooltips', [
+                                          'Mal', 'Barry', 'Gary','Dave','Paul', 'Rich',
+                                          'Mal', 'Barry', 'Gary','Dave','Paul', 'Rich'
+                                         ]);
+            radar3.Set('chart.background.circles.poly', true);
+            radar3.Set('chart.background.circles.spacing', 30);
+            radar3.Set('chart.colors', ['transparent']);
+            radar3.Set('chart.axes.color', 'transparent');
+            radar3.Set('chart.highlights', true);
+            radar3.Set('chart.strokestyle', ['red', 'black']);
+            radar3.Set('chart.linewidth', 2);
+            radar3.Set('chart.linewidth', 2);
+            radar3.Set('chart.labels.axes', 'n');
+            radar3.Set('chart.text.size', 16);
+            RGraph.Effects.Radar.Grow(radar3);
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

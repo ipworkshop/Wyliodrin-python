@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script src="../../libraries/jquery.min.js" ></script>
+    <script src="../../libraries/RGraph.common.core.js" ></script>
+    <script src="../../libraries/RGraph.bar.js" ></script>
+    
+    <link rel="stylesheet" href="/css/animate.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <meta name="description" content="A demonstration of how you can add CSS3 animations to your charts" />
+</head>
+<body>
+
+    <h1>CSS3 animations</h1>
+    
+    <p>
+        New CSS3 animations can be used to great effect with your canvas tags.
+    </p>
+
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    
+    <br />
+    
+    <script>
+        bar = new RGraph.Bar('cvs', [4,5,3,8,4,9,6,5,3]);
+        bar.Set('chart.labels', ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe']);
+        bar.Draw();
+        
+        function swap ()
+        {
+            $('#cvs').addClass('animated bounceOutLeft');
+            setTimeout(function ()
+                {
+                    RGraph.Reset(bar.canvas);
+
+                    var bar2 = new RGraph.Bar('cvs', [4,8,5]);
+                    bar2.Set('chart.colors', ['red']);
+                    bar2.Set('chart.labels', ['Mal', 'Barry', 'Gary']);
+                    bar2.Draw();
+
+                    $('#cvs').removeClass('bounceOutLeft');
+                    $('#cvs').addClass('bounceInLeft');
+                }, 750)
+        }
+    </script>
+    
+    <button onclick="swap()">Click me</button>
+
+</body>
+</html>

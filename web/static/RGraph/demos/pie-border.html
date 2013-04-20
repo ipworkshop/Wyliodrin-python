@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    
+    <title>Pie chart with border</title>
+    
+    <meta name="description" content="A Pie chart that has been exploded and drawn with a border" />
+</head>
+<body>
+
+    <h1>Pie chart border</h1>
+
+    <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+    
+<script>
+    window.onload = function ()
+    {
+        // Create the Pie chart
+        var pie = new RGraph.Pie('cvs', [4,6,3,5,2,5,8]);        
+        pie.Set('labels', ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']);
+        pie.Set('tooltips', ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']);
+        pie.Set('text.color', '#aaa');
+        pie.Set('exploded', [,25]);
+        pie.Draw();
+        
+        /**
+        * Draw the border. If there's no exploded segments then there's no need to use the segments array
+        */
+        pie.ondraw = function (obj)
+        {
+            var context = obj.context;
+
+            for (var i=0; i<obj.angles.length; ++i) {
+
+                var s = obj.angles[i];
+
+                context.beginPath();
+                    context.fillStyle = 'rgba(0,0,0,0.1)';
+                    context.arc(s[2], s[3], obj.radius, s[0], s[1], false);
+                    context.arc(s[2], s[3], obj.radius - 15, s[1], s[0], true);
+                context.fill();
+            }
+        }
+        
+        /**
+        * Redraw the chart so that the ondraw event listener
+        * just added is run
+        */
+        RGraph.Redraw();
+    }
+</script>
+
+    <p>        
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>
