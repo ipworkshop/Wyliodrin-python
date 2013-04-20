@@ -1,11 +1,11 @@
-$("#login").submit(function(event) {
+$("#form-add").submit(function(event) {
 
   event.preventDefault();
 
   var $form = $( this ),
 
-      email = $form.find( 'input[name="email"]' ).val(),
-	  password = $form.find( 'input[name="password"]' ).val(),
+      id = $form.find( 'input[id="id"]' ).val(),
+	  email = $form.find( 'input["email"]' ).val(),
 
       url = $form.attr( 'action' );
 
@@ -13,7 +13,7 @@ $("#login").submit(function(event) {
 
   /* Send the data using post */
 
-  var posting = $.post( url, { email: email, password: password} );
+  var posting = $.post( url, { id: , id: email: email} );
 
  
 
@@ -24,11 +24,11 @@ $("#login").submit(function(event) {
     info = jQuery.parseJSON (data);
 	if (info.result==1)
 	{
-		window.location = "/fluid"
+		alert ("Your raspberry has been added");
 	}
 	else
 	{
-		alert ("Login failed");
+		alert ("Error");
 	}
   });
 

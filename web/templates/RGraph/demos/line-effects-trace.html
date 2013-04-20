@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="../libraries/jquery.min.js" ></script>
+    
+    <title>Line chart with Trace effect</title>
+    
+    <meta name="description" content="A Line chart with Trace effect" />
+</head>
+<body>
+
+    <h1>Line chart with Trace effect</h1>
+
+    <div>
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var line = new RGraph.Line('cvs', [84,-5,-30,-26,-45,12,84,73,60]);
+        line.Set('chart.labels', ['Felicity','Gary','Neil','Jay','Helga','Ray','Kev','Luis','Pete']);
+        line.Set('chart.colors', ['black']);
+        line.Set('chart.shadow', true);
+        line.Set('chart.shadow.offsetx', 1);
+        line.Set('chart.shadow.offsety', 1);
+        line.Set('chart.linewidth', 2);
+        line.Set('chart.yaxispos', 'right');
+        line.Set('chart.xaxispos', 'center');
+        line.Set('chart.hmargin', 5);
+        RGraph.Effects.Line.jQuery.Trace(line);
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

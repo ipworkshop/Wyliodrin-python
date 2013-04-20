@@ -1,4 +1,4 @@
-$("#login").submit(function(event) {
+$("#signup").submit(function(event) {
 
   event.preventDefault();
 
@@ -24,11 +24,11 @@ $("#login").submit(function(event) {
     info = jQuery.parseJSON (data);
 	if (info.result==1)
 	{
-		window.location = "/fluid"
+		alert ("Thank you for signing up. Please login.");
 	}
 	else
 	{
-		alert ("Login failed");
+		alert ("Signup failed");
 	}
   });
 

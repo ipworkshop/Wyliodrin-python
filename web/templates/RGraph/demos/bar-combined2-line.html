@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <meta name="description" content="A combined Bar and Line chart that shows the CombinedChart class" />
+</head>
+<body>
+
+    <h1>A combined bar and Line chart</h1>
+
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    <script>
+        bar = new RGraph.Bar('cvs', [[3,4,6],[2,5,3],[1,5,2],[1,4,6],[1,6,8]]);
+        bar.Set('labels', ['Mal', 'Barry', 'Gary', 'Neil', 'Kim']);
+        bar.Set('colors', ['#058DC7', 'Gradient(#50B332:#B1E59F)', 'Gradient(#EC561B:#F59F7D)']);
+        bar.Set('hmargin', 15);
+        bar.Set('strokestyle', 'white');
+        bar.Set('linewidth', 2);
+        bar.Set('shadow', true);
+        bar.Set('shadow.offsetx', 1);
+        bar.Set('shadow.offsety', 0);
+        bar.Set('shadow.blur', 1);
+        
+        line = new RGraph.Line('cvs', [2,3,2,1,5]);
+        line.Set('spline', true);
+        line.Set('tickmarks', 'filledcircle');
+        line.Set('colors', ['#CDE217']);
+        line.Set('ymax', 10);
+
+        var combo = new RGraph.CombinedChart(bar, line);
+        combo.Draw();
+    </script>
+
+</body>
+</html>
