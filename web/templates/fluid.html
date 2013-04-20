@@ -69,8 +69,16 @@
             </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+             
+			   <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">My XMPP</a></li>
+				</ul>
+              </li>				
+			  
+             
+			  
 			   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My raspberries<b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -84,6 +92,7 @@
                     <li><a href="#remrasp_modal" data-toggle="modal">Remove raspberry</a></li>
                   </ul>
                 </li>
+				 <li><a href="#contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -92,11 +101,30 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
+       
+	   <div class="span3">
+		 <div class="well sidebar-nav">
             <ul class="nav nav-list">
+              <li class="nav-header">My projects</li>
+              <li class="active"><a href="#">Project 1</a></li>
+              <li class="active"><a href="#">Project 2</a></li>
+              <li class="active"><a href="#">Project 3</a></li>
+            </ul>
+         
+        </div><!--/span-->
+        <div class="well sidebar-nav">
+	      <ul class="nav nav-list">
+			  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select raspberry to see sensors<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Raspberry 1</a></li>
+                    <li><a href="#">Raspberry 2</a></li>
+                    <li><a href="#">Raspberry 3</a></li>
+    
+                  </ul>
+                </li>
               <li class="nav-header">Environment sensors</li>
-              <li class="active"><a href="#">Termometre</a></li>
+              <li><a href="#">Termometre</a></li>
               <li><a href="#">Other 1</a></li>
               <li><a href="#">Other 2</a></li>
               <li><a href="#">Etc.</a></li>
@@ -104,16 +132,13 @@
               <li><a href="#">Right</a></li>
               <li><a href="#">Left</a></li>
               <li><a href="#">Up</a></li>
-              <li><a href="#">Down</a></li>
-              <li><a href="#">Etc.</a></li>
-              <li><a href="#">Etc.</a></li>
-              <li class="nav-header">Other</li>
-              <li><a href="#">Other 1</a></li>
-              <li><a href="#">Other 2</a></li>
-              <li><a href="#">Other 3</a></li>
+              <li><a href="#">Down</a></li>       
             </ul>
+			 
           </div><!--/.well -->
+		 
         </div><!--/span-->
+		
         <div class="span9">
           <div class="hero-unit" id="editor">
            function foo(items) {
@@ -128,16 +153,26 @@
 				editor.getSession().setMode("ace/mode/python");
 			</script>
         
-            <a href="#" class="btn btn-large btn-success">Run &raquo;</a>
+           
+			<div class="dropdown">
+                  <a href="#" class="btn btn-large btn-success" data-toggle="dropdown">Run on raspberry<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Raspberry 1</a></li>
+                    <li><a href="#">Raspberry 2</a></li>
+                    <li><a href="#">Raspberry 3</a></li>
+
+                  </ul>
+                </div>
+				
           </div>
-          <div class="row-fluid">
-     
-            <div class="span4">
-			  <br>
+
+			  <div>
               <h2>Graphes</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
+              <canvas id="myCanvas" width="600" height="250">[No canvas support]</canvas>
+
             </div><!--/span-->
+			</div>
+			</div>
 			
 			
 			<div class="modal hide fade" id="addrasp_modal">
@@ -208,6 +243,18 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+	<script>
+    window.onload = function ()
+    {
+        var data = [280, 45, 133, 166, 84, 259, 266, 960, 219, 311, 67, 89];
+
+        var bar = new RGraph.Bar('myCanvas', data);
+        bar.Set('chart.labels', ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        bar.Set('chart.gutter.left', 35);
+        bar.Draw();
+    }
+</script>
+
     <script src="static/assets/js/jquery.js"></script>
     <script src="static/assets/js/bootstrap-transition.js"></script>
     <script src="static/assets/js/bootstrap-alert.js"></script>
@@ -221,6 +268,39 @@
     <script src="static/assets/js/bootstrap-collapse.js"></script>
     <script src="static/assets/js/bootstrap-carousel.js"></script>
     <script src="static/assets/js/bootstrap-typeahead.js"></script>
+	<script src="RGraph.common.core.js"></script>
+<script src="RGraph.common.dynamic.js"></script>   <!-- Just needed for dynamic features (eg tooltips) -->
+
+<script src="RGraph.common.annotate.js"></script>  <!-- Just needed for annotating -->
+<script src="RGraph.common.context.js"></script>   <!-- Just needed for context menus -->
+<script src="RGraph.common.effects.js"></script>   <!-- Just needed for visual effects -->
+<script src="RGraph.common.key.js"></script>       <!-- Just needed for keys -->
+<script src="RGraph.common.resizing.js"></script>  <!-- Just needed for resizing -->
+<script src="RGraph.common.tooltips.js"></script>  <!-- Just needed for tooltips -->
+<script src="RGraph.common.zoom.js"></script>      <!-- Just needed for zoom -->
+
+<script src="RGraph.bar.js"></script>              <!-- Just needed for Bar charts -->
+<script src="RGraph.bipolar.js"></script>          <!-- Just needed for Bi-polar charts -->
+<script src="RGraph.cornergauge.js"></script>      <!-- Just needed for CornerGauge charts -->
+<script src="RGraph.fuel.js"></script>             <!-- Just needed for Fuel charts -->
+<script src="RGraph.funnel.js"></script>           <!-- Just needed for Funnel charts -->
+<script src="RGraph.gantt.js"></script>            <!-- Just needed for Gantt charts -->
+<script src="RGraph.gauge.js"></script>            <!-- Just needed for Gauge charts -->
+<script src="RGraph.hbar.js"></script>             <!-- Just needed for Horizontal Bar charts -->
+<script src="RGraph.hprogress.js"></script>        <!-- Just needed for Porizontal Progress bars -->
+<script src="RGraph.led.js"></script>              <!-- Just needed for LED charts -->
+<script src="RGraph.line.js"></script>             <!-- Just needed for Line charts -->
+<script src="RGraph.meter.js"></script>            <!-- Just needed for Meter charts -->
+<script src="RGraph.odo.js"></script>              <!-- Just needed for Odometers -->
+<script src="RGraph.pie.js"></script>              <!-- Just needed for Pie AND Donut charts -->
+<script src="RGraph.radar.js"></script>            <!-- Just needed for Radar charts -->
+<script src="RGraph.rose.js"></script>             <!-- Just needed for Rose charts -->
+<script src="RGraph.rscatter.js"></script>         <!-- Just needed for Rscatter charts -->
+<script src="RGraph.scatter.js"></script>          <!-- Just needed for Scatter charts -->
+<script src="RGraph.thermometer.js"></script>      <!-- Just needed for Thermometer charts -->
+<script src="RGraph.vprogress.js"></script>        <!-- Just needed for Vertical Progress bars -->
+<script src="RGraph.waterfall.js"></script>        <!-- Just needed for Waterfall charts  -->
+
 
   </body>
 </html>

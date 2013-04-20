@@ -6109,6 +6109,7 @@ a.badge:focus {
 }
 
 .hero-unit {
+  height: 175px;
   padding: 60px;
   margin-bottom: 30px;
   font-size: 18px;

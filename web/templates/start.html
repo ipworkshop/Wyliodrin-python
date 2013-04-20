@@ -297,9 +297,9 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>    
               </ul>
-				<form class="navbar-form pull-right">
-					<input class="span2" type="text" placeholder="Email">
-					<input class="span2" type="password" placeholder="Password">
+				<form id="login" class="navbar-form pull-right" method="post" action="login">
+					<input class="span2" type="text" name="email" placeholder="Email">
+					<input class="span2" type="password" name="password" placeholder="Password">
 					<button type="submit" class="btn">Sign in</button>
 				</form>
             </div><!--/.nav-collapse -->
@@ -313,7 +313,7 @@
 
     <!-- Carousel
     ================================================== -->
-	<div id="signup" style="position: absolute; top: 100px; left: 100px; width: 500px; height: 400px; display:none;">&nbsp;</div>
+	<div id="signupname" style="position: absolute; top: 100px; left: 100px; width: 500px; height: 400px; display:none;">&nbsp;</div>
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
@@ -360,15 +360,15 @@
   <div class="modal-body">
     <div class="container">
 
-      <form class="form-signin">
+      <form id="signup" class="form-signup" action="signup" method="post">
         <h2 class="form-signin-heading">Welcome</h2>
 		<br>
-        <input type="text" class="span2" id="email" placeholder="Email address">
+        <input type="email" class="span2" id="email" name="email" placeholder="Email address">
 		<br>
-        <input type="password" class="span2" id="password" placeholder="Password">
+        <input type="password" class="span2" id="password" name="password" placeholder="Password">
         <br>
 		<br>
-        <button onclick="OnOK()" class="btn btn-large btn-success" type="submit">Sign up</button>
+        <button  class="btn btn-large btn-success" type="submit">Sign up</button>
       </form>
 
     </div> 
