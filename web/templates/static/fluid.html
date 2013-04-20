@@ -29,7 +29,7 @@
 	  
 
     #editor { 
-     
+        position: relative;
         top: 0;
         right: 0;
         bottom: 0;
@@ -79,8 +79,9 @@
                     <li><a href="#">Raspberry 3</a></li>
                     <li class="divider"></li>
                     <li class="nav-header">Nav header</li>
-                    <li><a href="#">Other 1</a></li>
-                    <li><a href="#">Other 2</a></li>
+                    <li><a href="#addrasp_modal" data-toggle="modal">Add raspberry</a></li>
+				
+                    <li><a href="#remrasp_modal" data-toggle="modal">Remove raspberry</a></li>
                   </ul>
                 </li>
             </ul>
@@ -123,7 +124,7 @@
 			<script src="http://rawgithub.com/ajaxorg/ace-builds/master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 				var editor = ace.edit("editor");
-				editor.setTheme("ace/theme/twilight");
+				editor.setTheme("ace/theme/merbivor");
 				editor.getSession().setMode("ace/mode/python");
 			</script>
         
@@ -137,6 +138,60 @@
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
+			
+			
+			<div class="modal hide fade" id="addrasp_modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Add new raspberry</h3>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+
+      <form class="form-signin">
+        
+		<br>
+        <input type="text" class="span2" id="rasp_add" placeholder="Raspberry">
+		<br>
+        <input type="text" class="span2" id="ip_rasp_add" placeholder="Ip raspberry">
+        <br>
+		<br>
+        <button onclick="OnOK()" class="btn btn-large btn-success" type="submit">Add</button>
+      </form>
+
+    </div> 
+  </div>
+  <div class="modal-footer">
+     <button class="btn btn-large btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+  
+  </div>
+</div>
+<div class="modal hide fade" id="remrasp_modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Add new raspberry</h3>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+
+      <form class="form-signin">
+        
+		<br>
+        <input type="text" class="span2" id="rasp_rem" placeholder="Raspberry">
+		<br>
+        <input type="text" class="span2" id="ip_rem_rasp" placeholder="Ip raspberry">
+        <br>
+		<br>
+        <button onclick="OnOK()" class="btn btn-large btn-success" type="submit">Add</button>
+      </form>
+
+    </div> 
+  </div>
+  <div class="modal-footer">
+     <button class="btn btn-large btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+  
+  </div>
+</div>
            
           </div><!--/row-->
          
