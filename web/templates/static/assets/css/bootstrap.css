@@ -334,6 +334,8 @@ a:focus {
 
 .span2 {
   width: 300px;
+ 
+
 }
 
 .span1 {
@@ -1021,7 +1023,7 @@ pre code {
 
 .pre-scrollable {
   max-height: 340px;
-  overflow-y: scroll;
+  overflow-y: scrollable;
 }
 
 form {
@@ -1404,6 +1406,8 @@ input.span2,
 textarea.span2,
 .uneditable-input.span2 {
   width: 126px;
+  
+
 }
 
 input.span1,
@@ -2169,6 +2173,8 @@ table th[class*="span"],
   float: none;
   width: 124px;
   margin-left: 0;
+  
+
 }
 
 .table td.span3,
@@ -5208,6 +5214,9 @@ input[type="submit"].btn.btn-mini {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
+		overflow-x: hidden;
+
+
 }
 
 .modal.fade {
@@ -5225,6 +5234,8 @@ input[type="submit"].btn.btn-mini {
 .modal-header {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
+ 
+
 }
 
 .modal-header .close {
@@ -5241,6 +5252,8 @@ input[type="submit"].btn.btn-mini {
   max-height: 400px;
   padding: 15px;
   overflow-y: auto;
+  overflow-x: hidden;
+
 }
 
 .modal-form {
@@ -5260,6 +5273,8 @@ input[type="submit"].btn.btn-mini {
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
      -moz-box-shadow: inset 0 1px 0 #ffffff;
           box-shadow: inset 0 1px 0 #ffffff;
+		  
+
 }
 
 .modal-footer:before,
