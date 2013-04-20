@@ -6,13 +6,21 @@ import logging
 
 def log(message):
 	print message
-	
+
+class ValueStanza(ElementBase):	
+	namespace = 'wylio'
+	name = 'value'
+	plugin_attrib = 'value'
+	interfaces = set(('timestamp', 'signal', 'value'))
+	sub_interfaces = tuple ()
+
 class WylioStanza(ElementBase):	
 	namespace = 'wylio'
 	name = 'wylio'
 	plugin_attrib = 'wylio'
-	interfaces = set(('run', 'source', 'value'))
+	interfaces = set(('run', 'source'))
 	sub_interfaces = interfaces
+	subitem = (ValueStanza,)
 
 
 class WylioXMPP:
@@ -24,6 +32,7 @@ class WylioXMPP:
 		if self.connection == None:
 			self.connection = ClientXMPP(jid, password)
 		register_stanza_plugin (Message, WylioStanza)	
+		register_stanza_plugin (WylioStanza, ValueStanza)	
 		self.connection.add_event_handler("connected", self.connected)
 		self.connection.add_event_handler("session_start", self.start)
 		self.connection.add_event_handler("failed_auth", self.failed)
@@ -39,7 +48,7 @@ class WylioXMPP:
 		log ("WylioXMPP start")
 		self.connection	.send_presence()
 		log ("Wylio presence")
-		self.run_program ("source", "wylio.project@gmail.com")
+		self.run_program ("source", "wylio.project@gmail.com/raspy")
 		
 	def message(self, event):
 		print event
@@ -54,8 +63,11 @@ class WylioXMPP:
 		print "fsdafasd"
 		msg = self.connection.Message (sto=jid, stype="normal")
 		print msg
-		msg["body"]="dasdsadas"
 		msg["wylio"]["run"] = name
+		#msg["wylio"]["value"]="4082374"
+		msg["wylio"]["value"]["timestamp"]="4082374"
+		msg["wylio"]["value"]["signal"]="some name"
+		msg["wylio"]["value"]["value"]="478923"
 		print "message"
 		print msg
 		msg.send()
