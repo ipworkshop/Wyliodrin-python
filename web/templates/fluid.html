@@ -1,40 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<script src="RGraph/libraries/RGraph.common.core.js"></script>
-<script src="RGraph/libraries/RGraph.common.dynamic.js"></script>   <!-- Just needed for dynamic features (eg tooltips) -->
+<script src="static/RGraph/libraries/RGraph.common.core.js"></script>
+<script src="static/RGraph/libraries/RGraph.common.dynamic.js"></script>   <!-- Just needed for dynamic features (eg tooltips) -->
 
-<script src="RGraph/libraries/RGraph.common.annotate.js"></script>  <!-- Just needed for annotating -->
-<script src="RGraph/libraries/RGraph.common.context.js"></script>   <!-- Just needed for context menus -->
-<script src="RGraph/libraries/RGraph.common.effects.js"></script>   <!-- Just needed for visual effects -->
-<script src="RGraph/libraries/RGraph.common.key.js"></script>       <!-- Just needed for keys -->
-<script src="RGraph/libraries/RGraph.common.resizing.js"></script>  <!-- Just needed for resizing -->
-<script src="RGraph/libraries/RGraph.common.tooltips.js"></script>  <!-- Just needed for tooltips -->
-<script src="RGraph/libraries/RGraph.common.zoom.js"></script>      <!-- Just needed for zoom -->
+<script src="static/RGraph/libraries/RGraph.common.annotate.js"></script>  <!-- Just needed for annotating -->
+<script src="static/RGraph/libraries/RGraph.common.context.js"></script>   <!-- Just needed for context menus -->
+<script src="static/RGraph/libraries/RGraph.common.effects.js"></script>   <!-- Just needed for visual effects -->
+<script src="static/RGraph/libraries/RGraph.common.key.js"></script>       <!-- Just needed for keys -->
+<script src="static/RGraph/libraries/RGraph.common.resizing.js"></script>  <!-- Just needed for resizing -->
+<script src="static/RGraph/libraries/RGraph.common.tooltips.js"></script>  <!-- Just needed for tooltips -->
+<script src="static/RGraph/libraries/RGraph.common.zoom.js"></script>      <!-- Just needed for zoom -->
 
-<script src="RGraph/libraries/RGraph.bar.js"></script>              <!-- Just needed for Bar charts -->
-<script src="RGraph/libraries/RGraph.bipolar.js"></script>          <!-- Just needed for Bi-polar charts -->
-<script src="RGraph/libraries/RGraph.cornergauge.js"></script>      <!-- Just needed for CornerGauge charts -->
-<script src="RGraph/libraries/RGraph.fuel.js"></script>             <!-- Just needed for Fuel charts -->
-<script src="RGraph/libraries/RGraph.funnel.js"></script>           <!-- Just needed for Funnel charts -->
-<script src="RGraph/libraries/RGraph.gantt.js"></script>            <!-- Just needed for Gantt charts -->
-<script src="RGraph/libraries/RGraph.gauge.js"></script>            <!-- Just needed for Gauge charts -->
-<script src="RGraph/libraries/RGraph.hbar.js"></script>             <!-- Just needed for Horizontal Bar charts -->
-<script src="RGraph/libraries/RGraph.hprogress.js"></script>        <!-- Just needed for Porizontal Progress bars -->
-<script src="RGraph/libraries/RGraph.led.js"></script>              <!-- Just needed for LED charts -->
-<script src="RGraph/libraries/RGraph.line.js"></script>             <!-- Just needed for Line charts -->
-<script src="RGraph/libraries/RGraph.meter.js"></script>            <!-- Just needed for Meter charts -->
-<script src="RGraph/libraries/RGraph.odo.js"></script>              <!-- Just needed for Odometers -->
-<script src="RGraph/libraries/RGraph.pie.js"></script>              <!-- Just needed for Pie AND Donut charts -->
-<script src="RGraph/libraries/RGraph.radar.js"></script>            <!-- Just needed for Radar charts -->
-<script src="RGraph/libraries/RGraph.rose.js"></script>             <!-- Just needed for Rose charts -->
-<script src="RGraph/libraries/RGraph.rscatter.js"></script>         <!-- Just needed for Rscatter charts -->
-<script src="RGraph/libraries/RGraph.scatter.js"></script>          <!-- Just needed for Scatter charts -->
-<script src="RGraph/libraries/RGraph.thermometer.js"></script>      <!-- Just needed for Thermometer charts -->
-<script src="RGraph/libraries/RGraph.vprogress.js"></script>        <!-- Just needed for Vertical Progress bars -->
-<script src="RGraph/libraries/RGraph.waterfall.js"></script>        <!-- Just needed for Waterfall charts  -->
+<script src="static/RGraph/libraries/RGraph.bar.js"></script>              <!-- Just needed for Bar charts -->
+<script src="static/RGraph/libraries/RGraph.bipolar.js"></script>          <!-- Just needed for Bi-polar charts -->
+<script src="static/RGraph/libraries/RGraph.cornergauge.js"></script>      <!-- Just needed for CornerGauge charts -->
+<script src="static/RGraph/libraries/RGraph.fuel.js"></script>             <!-- Just needed for Fuel charts -->
+<script src="static/RGraph/libraries/RGraph.funnel.js"></script>           <!-- Just needed for Funnel charts -->
+<script src="static/RGraph/libraries/RGraph.gantt.js"></script>            <!-- Just needed for Gantt charts -->
+<script src="static/RGraph/libraries/RGraph.gauge.js"></script>            <!-- Just needed for Gauge charts -->
+<script src="static/static/RGraph/libraries/RGraph.hbar.js"></script>             <!-- Just needed for Horizontal Bar charts -->
+<script src="static/RGraph/libraries/RGraph.hprogress.js"></script>        <!-- Just needed for Porizontal Progress bars -->
+<script src="static/RGraph/libraries/RGraph.led.js"></script>              <!-- Just needed for LED charts -->
+<script src="static/RGraph/libraries/RGraph.line.js"></script>             <!-- Just needed for Line charts -->
+<script src="static/RGraph/libraries/RGraph.meter.js"></script>            <!-- Just needed for Meter charts -->
+<script src="static/RGraph/libraries/RGraph.odo.js"></script>              <!-- Just needed for Odometers -->
+<script src="static/RGraph/libraries/RGraph.pie.js"></script>              <!-- Just needed for Pie AND Donut charts -->
+<script src="static/RGraph/libraries/RGraph.radar.js"></script>            <!-- Just needed for Radar charts -->
+<script src="static/RGraph/libraries/RGraph.rose.js"></script>             <!-- Just needed for Rose charts -->
+<script src="static/RGraph/libraries/RGraph.rscatter.js"></script>         <!-- Just needed for Rscatter charts -->
+<script src="static/RGraph/libraries/RGraph.scatter.js"></script>          <!-- Just needed for Scatter charts -->
+<script src="static/RGraph/libraries/RGraph.thermometer.js"></script>      <!-- Just needed for Thermometer charts -->
+<script src="static/RGraph/libraries/RGraph.vprogress.js"></script>        <!-- Just needed for Vertical Progress bars -->
+<script src="static/RGraph/libraries/RGraph.waterfall.js"></script>        <!-- Just needed for Waterfall charts  -->
+<script src="static/assets/js/jquery.js"></script>
+    <script src="static/assets/js/bootstrap-transition.js"></script>
+	<script src="static/assets/wyliodrin/addrasp.js"></script>
+	<script src="static/assets/wyliodrin/get_prog.js"></script>
+	
+	<script src="static/assets/wyliodrin/names.js"></script>
+	<script src="static/assets/wyliodrin/remrasp.js"></script>
+    <script src="static/assets/js/bootstrap-alert.js"></script>
+    <script src="static/assets/js/bootstrap-modal.js"></script>
+    <script src="static/assets/js/bootstrap-dropdown.js"></script>
+    <script src="static/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="static/assets/js/bootstrap-tab.js"></script>
+    <script src="static/assets/js/bootstrap-tooltip.js"></script>
+    <script src="static/assets/js/bootstrap-popover.js"></script>
+    <script src="static/assets/js/bootstrap-button.js"></script>
+    <script src="static/assets/js/bootstrap-collapse.js"></script>
+    <script src="static/assets/js/bootstrap-carousel.js"></script>
+    <script src="static/assets/js/bootstrap-typeahead.js"></script>
     <meta charset="utf-8">
     <title>User logged in</title>
+	<script src="static/assets/wyliodrin/getace.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -143,9 +162,9 @@
               <li class="active"><a href="#">Project 1</a></li>
               <li><a href="#">Project 2</a></li>
               <li><a href="#">Project 3</a></li>
-			  <li><a href="#name" class="btn btn-large btn-success">Add new project</b></a></li>
 			  
             </ul>
+			<a href="#add_name" class="btn btn-success" data-toggle="modal">Add new project</a>
          
         </div><!--/span-->
         <div class="well sidebar-nav">
@@ -177,54 +196,79 @@
 		
         <div class="span9">
           <div class="hero-unit" id="editor">
-           function foo(items) {
-					var x = "All this is syntax highlighted";
-					return x;
-					}</div>
+          </div>
     
 			<script src="http://rawgithub.com/ajaxorg/ace-builds/master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 				var editor = ace.edit("editor");
 				editor.setTheme("ace/theme/tomorrow");
 				editor.getSession().setMode("ace/mode/python");
+				
+				load();
+				editor.getValue(); // or session.getValue
 			</script>
         
            
 			<div class="dropdown">
                   <a href="#" class="btn btn-large btn-success" data-toggle="dropdown">Run on raspberry<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Raspberry 1</a></li>
+                    <li><a href="#" onCick="rasp()">Raspberry 1</a></li>
                     <li><a href="#">Raspberry 2</a></li>
                     <li><a href="#">Raspberry 3</a></li>
-
+                 
                   </ul>
+				  <a href="#" class="btn btn-large btn-success" onClick="save()">Save</a>
                 </div>
-				
-          </div>
+				 <br>
+        
 
-			  <div>
-              <h2>Graphes</h2>
-              <canvas id="myCanvas" width="100" height="400">[No canvas support]</canvas>
-			 <script>
+			  
+             
+              <canvas id="myCanvas" width="80" height="400" style="border:1px solid #000000;"></canvas>
+			
+    <canvas id="myLine" width="850" height="400" style="border:1px solid #000000;"></canvas>
+<script>
     window.onload = function ()
     {
-        // Create the Thermometer chart. The arguments are: the canvas ID, the minimum,
+	     // Create the Thermometer chart. The arguments are: the canvas ID, the minimum,
         // the maximum and the indicated value.
-        var thermometer = new RGraph.Thermometer('myCanvas', 0,100,14);
+        var thermometer = new RGraph.Thermometer('myCanvas', 0,100,60);
         
         // Configure the thermometer chart to look as you want.
-        thermometer.Set('chart.gutter.left', 45);
-        thermometer.Set('chart.gutter.right', 45);
-        thermometer.Set('chart.colors', ['rgba(255,0,0,1)']);
+       
         
         // Now call the .Draw() method to draw the chart.
         thermometer.Draw();
+        // The data for the Line chart. Multiple lines are specified as seperate arrays.
+        var data = [10,4,17,50,25,19,20,25,30,29,30,29];
+    
+        // Create the Line chart object. The arguments are the canvas ID and the data array.
+        var line = new RGraph.Line("myLine", data);
+        
+        // The way to specify multiple lines is by giving multiple arrays, like this:
+        // var line = new RGraph.Line("myLine", [4,6,8], [8,4,6], [4,5,3]);
+        
+        // Configure the chart to appear as you wish.
+        line.Set('chart.background.barcolor1', 'white');
+        line.Set('chart.background.barcolor2', 'white');
+        line.Set('chart.background.grid.color', 'rgba(238,238,238,1)');
+        line.Set('chart.colors', ['red']);
+        line.Set('chart.linewidth', 2);
+        line.Set('chart.filled', false);
+        line.Set('chart.hmargin', 5);
+        line.Set('chart.labels', ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        line.Set('chart.gutter.left', 40);
+        
+        // Now call the .Draw() method to draw the chart.
+        line.Draw();
     }
 </script>
 
+  </div>
 
 
-            </div><!--/span-->
+
+          
 			</div>
 			</div>
 			
@@ -281,7 +325,7 @@
   
   </div>
 </div>
-<div class="modal hide fade" id="name">
+<div class="modal hide fade" id="add_name">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>Add new project</h3>
@@ -290,10 +334,10 @@
   <div class="modal-body">
     <div class="container">
 
-      <form class="form-rem">
+      <form class="name">
         
 		<br>
-        <input type="text" class="span2" id="name" placeholder="Name">
+        <input type="text" class="span2" id="pr_name" placeholder="Project name">
 		
 		<br>
         <button onclick="OnOK()" class="btn btn-large btn-success" type="submit">Add</button>
@@ -318,21 +362,7 @@
 
 
 
-    <script src="static/assets/js/jquery.js"></script>
-    <script src="static/assets/js/bootstrap-transition.js"></script>
-	<script src="static/assets/wyliodrin/addrasp.js"></script>
-	<script src="static/assets/wyliodrin/remrasp.js"></script>
-    <script src="static/assets/js/bootstrap-alert.js"></script>
-    <script src="static/assets/js/bootstrap-modal.js"></script>
-    <script src="static/assets/js/bootstrap-dropdown.js"></script>
-    <script src="static/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="static/assets/js/bootstrap-tab.js"></script>
-    <script src="static/assets/js/bootstrap-tooltip.js"></script>
-    <script src="static/assets/js/bootstrap-popover.js"></script>
-    <script src="static/assets/js/bootstrap-button.js"></script>
-    <script src="static/assets/js/bootstrap-collapse.js"></script>
-    <script src="static/assets/js/bootstrap-carousel.js"></script>
-    <script src="static/assets/js/bootstrap-typeahead.js"></script>
+    
 
 
 

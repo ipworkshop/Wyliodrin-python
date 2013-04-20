@@ -12,7 +12,7 @@ web.debug = True
 client = MongoClient ()
 db = client.wyliodrin
 
-def user():
+def user_online():
 	if "email" in session:
 		return session["email"]
 	else:
@@ -20,14 +20,14 @@ def user():
 
 @web.route ("/")
 def start():
-	if user() != None:
+	if user_online() != None:
 		return redirect (url_for ("fluid"))
 	else:
 		return render_template ("start.html")
 	
 @web.route ("/fluid")
 def fluid():
-	if user != Nine:
+	if user_online() != None:
 		return render_template ("fluid.html")
 	else:
 		return redirect (url_for ("start"))
@@ -48,7 +48,7 @@ def signup():
 
 @web.route ("/newproject", methods=['POST'])
 def newproject():
-	if user() != None:
+	if user_online() != None:
 		result = "0";
 		name = request.form["name"]
 		email = session["email"]
@@ -61,21 +61,70 @@ def newproject():
 		return json.dumps ({"result":result})
 	else:
 		return ""
+		
+@web.route ("/listprojects")
+def listprojects():
+	if user_online() != None:
+		result = [];
+		email = user_online ()
+		projectslist = db.projects.find ({"email":email})
+		for project in projectslist:
+			result.append (project["name"])
+		print "Result ",
+		print result
+		return json.dumps (result)
+	else:
+		return ""
+
+@web.route ("/load")
+def load():
+	result = "0"
+	if user_online() != None:
+		email = user_online ()
+		source_data = db.users.find_one ({"email": email})
+		if source_data != None:
+			if "source" in source_data:
+				source = source_data["source"]
+			else:
+				source = ""
+			return source
+		else:
+			result = "0"
+		return ""
+	else:
+		return ""
+
 	
-@web.route ("/save")
+@web.route ("/save", methods=['POST'])
 def save():
 	result = "0"
-	if user() != None:
-		if "project" in session:
-			name = session["project"]
-			email = user ()
-			program = request.form["program"]
-			
-			
-			
+	if user_online() != None:
+		email = user_online ()
+		source = request.form["source"];
+		if db.users.update ({"email": email}, {"$set": {"source":source}})!=None:
+			result = "1"
+		else:
+			result = "0"
 		return json.dumps ({"result":result})	
 	else:
 		return ""
+
+@web.route ("/run", methods=['POST'])
+def save():
+	result = "0"
+	if user_online() != None:
+		email = user_online ()
+		source = request.form["source"];
+		if db.users.update ({"email": email}, {"$set": {"source":source}})!=None:
+			result = "1"
+			
+			# RUN
+		else:
+			result = "0"
+		return json.dumps ({"result":result})	
+	else:
+		return ""
+
 
 @web.route ("/login", methods=['POST'])
 def login():

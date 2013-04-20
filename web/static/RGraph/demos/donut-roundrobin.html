@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>An animated Donut chart (RoundRobin effect)</title>
+    
+    <meta name="description" content="An example of the Donut chart variant of the Pie chart which uses the RoundRobin animation effec" />
+</head>
+<body>
+
+    <h1>An animated Donut chart (RoundRobin effect)</h1>
+
+    <canvas id="cvs" width="350" height="300">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var donut = new RGraph.Pie('cvs', [4,6,3,5,8,6,5]);
+            donut.Set('chart.variant', 'donut');
+            donut.Set('chart.labels', ['John','Luis','Olga','Beverly','Jack','Kevin','Jill']);
+            donut.Set('chart.strokestyle', 'transparent');
+            donut.Set('chart.exploded', 3);
+            RGraph.Effects.Pie.RoundRobin(donut, {'radius': false});
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

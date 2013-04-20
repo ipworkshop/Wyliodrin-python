@@ -4,8 +4,8 @@ $("#form-rem").submit(function(event) {
 
   var $form = $( this ),
 
-      id = $form.find( 'input[id="id"]' ).val(),
-	  email = $form.find( 'input[jid="email"]' ).val(),
+      id = $form.find( 'input[name="id"]' ).val(),
+	  email = $form.find( 'input[name="email"]' ).val(),
 
       url = $form.attr( 'action' );
 
@@ -13,7 +13,7 @@ $("#form-rem").submit(function(event) {
 
   /* Send the data using post */
 
-  var posting = $.post( url, { id: , id: email: email} );
+  var posting = $.post( url, { id: id, email: email} );
 
  
 

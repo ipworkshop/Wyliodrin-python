@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script type="text/javascript" src="../libraries/RGraph.common.core.js" ></script>
+    <script type="text/javascript" src="../libraries/RGraph.bar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <meta name="description" content="A Bar chart that is using the sketch variant" />
+</head>
+<body>
+
+    <div style="text-align: center; font-family: Comic sans MS; width: 800px">
+        <h1>Fruit consumed at the luncheon</h1>
+    
+        <canvas id="cvs" width="800" height="250">[No canvas support]</canvas>
+    
+        <script>
+            window.onload = function ()
+            {
+                var bar7 = new RGraph.Bar('cvs', [248,243,180,160,120,43]);
+                bar7.Set('colors', ['black']);
+                bar7.Set('labels.above', true);
+                bar7.Set('labels.above.specific', ['Apples', 'Oranges', 'Kiwi', 'Grapes', 'Mango', 'Kum-quat']);
+                bar7.Set('labels.above.size', 8);
+                bar7.Set('ylabels.specific', [
+                                                    'Lots',
+                                                    '','','','','','','','','','','','','','','','','','','','',
+                                                    '','','','','','','','','','','','','','','','','','','','',
+                                                    'Not so much']);
+                bar7.Set('gutter.top', 50);
+                bar7.Set('gutter.left', 100);
+                bar7.Set('gutter.bottom', 25);
+                bar7.Set('variant', 'sketch');
+                bar7.Set('variant.sketch.verticals', true);
+                bar7.Set('text.font', 'Comic sans MS');
+                bar7.Set('text.size', 8);
+                bar7.Set('background.grid', false);
+                bar7.Draw();
+            }
+        </script>
+    </div>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

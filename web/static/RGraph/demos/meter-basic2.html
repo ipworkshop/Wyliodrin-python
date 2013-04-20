@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>Another  Meter chart</title>
+    
+    <meta name="description" content="A Meter chart" />
+</head>
+<body>
+
+    <h1>A basic Meter chart</h1>
+
+    <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    
+    <script>
+        window.onload = function ()
+        {
+            var meter = new RGraph.Meter('cvs', 50, 100, 60);
+            meter.Set('chart.units.post', 'k');
+            meter.Set('chart.red.start', 85);
+            meter.Set('chart.red.end', 100);
+            meter.Set('chart.yellow.start', 65);
+            meter.Set('chart.yellow.end', 85);
+            meter.Set('chart.green.start', 50);
+            meter.Set('chart.green.end', 65);
+            meter.Draw();
+        }
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>

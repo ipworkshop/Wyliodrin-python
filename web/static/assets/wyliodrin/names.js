@@ -1,11 +1,11 @@
-$("#form-add").submit(function(event) {
+$("#name").submit(function(event) {
 
   event.preventDefault();
 
   var $form = $( this ),
 
-      id = $form.find( 'input[id="id"]' ).val(),
-	  email = $form.find( 'input["email"]' ).val(),
+      pr_name = $form.find( 'input[name="pr_name"]' ).val(),
+	  
 
       url = $form.attr( 'action' );
 
@@ -13,7 +13,7 @@ $("#form-add").submit(function(event) {
 
   /* Send the data using post */
 
-  var posting = $.post( url, { id: id, email: email} );
+  var posting = $.post( url, { name: pr_name} );
 
  
 
@@ -24,7 +24,7 @@ $("#form-add").submit(function(event) {
     info = jQuery.parseJSON (data);
 	if (info.result==1)
 	{
-		alert ("Your raspberry has been added");
+		alert ("Project added");
 	}
 	else
 	{
