@@ -1,4 +1,4 @@
-import os, traceback, select
+import os, traceback, select, signal
 INITIALIZED = 0
 RUNNING = 1
 TERMINATED = 2
@@ -15,7 +15,7 @@ class Program:
 		self.mesOut = [0,0]
 		self.pid = 0
 		self.status = INITIALIZED
-	def run(self):		
+	def run(self,server,jid):		
 		self.stdin[0],self.stdin[1] = os.pipe()
 		self.stdout[0], self.stdout[1] = os.pipe()
 		self.stderr[0], self.stderr[1] = os.pipe()
@@ -24,7 +24,7 @@ class Program:
 		
 		try:
 			self.pid = os.fork()
-			if pid == 0:
+			if self.pid == 0:
 				os.dup2(self.stdin[0],0)
 				os.close(self.stdin[1])
 				
@@ -41,7 +41,7 @@ class Program:
 				os.close(self.mesOut[0])
 				
 				try:
-					os.execvp('python', ['python' , self.program])
+					os.execvp('python', ['python' , '-u', self.program])
 				except OSError:
 					traceback.print_exc()
 					status = ERRORRUNNING
@@ -71,19 +71,28 @@ class Program:
 				epoll.register(self.mesOut[0], select.EPOLLIN)
 				id = 0
 				while id == 0:
-					events = epoll.poll(0.5)
+					events = epoll.poll(0.01)
 					for fileno, event in events:
 						if fileno == self.stdout[0]:
 							message = os.read(self.stdout[0], 10000)
-							print message,
+							print "stdout"+message
+							server.send_signal_out(jid,message)	
 						elif fileno == self.stderr[0]:
 							message = os.read(self.stderr[0], 10000)
-							print message,
+							print "stderr"+message
+							server.send_signal_err(jid,message)	
 						elif fileno == self.mesOut[0]:
 							message = os.read(self.mesOut[0], 10000)
-							print message,
-					id, e = os.waitpid(pid,os.WNOHANG)
-				status = TERMINATED
+							print message
+							divided_message = message.split('\n')
+							for mes in divided_message:
+								m = mes.split(' ')
+								if len(m) == 2:
+									name = m[0]
+									value = m[1]
+									server.send_value_signal(jid,"0",name,value)							
+					id, e = os.waitpid(self.pid,os.WNOHANG)
+				self.status = TERMINATED
 		except OSError:
 			traceback.print_exc()
 			status = ERRORRUNNING
@@ -103,9 +112,9 @@ class Program:
 		if self.status == RUNNING:
 			os.write(self.stdout[1],input)
 			
-	def sendSensorInput(self, input):
+	def sendSensorInput(self, signal,input):
 		if self.status == RUNNING:
-			os.write(self.mesOut[1], input)
+			os.write(self.mesIn[1], signal+' '+input+'\n')
 			
 	def stop(self):
 		if self.status == RUNNING:
