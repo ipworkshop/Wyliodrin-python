@@ -32,9 +32,11 @@ def start():
 def values():
 	if user_online() != None:
 		email = user_online()
+		print email
 		signals = db.values.find ({"email":email})
+		print signals.count ()
 		values = []
-		for value in signals:
+		for value in signals:	
 			del value['_id']
 			values.append (value)
 		return json.dumps (values)
@@ -42,7 +44,7 @@ def values():
 		return ""
 
 @web.route ("/send", methods=['POST'])
-def values():
+def send():
 	if user_online() != None:
 		email = user_online()
 		if email in xmpp:

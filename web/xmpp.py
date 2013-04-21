@@ -69,12 +69,15 @@ class WylioXMPP:
 			signal = msg["wylio"]["value"]["signal"]
 			value = nr(msg["wylio"]["value"]["value"])
 			
-			print signal, " ", value
+			#print signal, " ", value
+			print self.email
 			if self.db.values.find ({"email":self.email, "signal":signal}).count () == 0:
+				print "insert"
 				self.db.values.insert ({"email":self.email, "signal":signal, "values":[value]})
 			else:
 				try:
 					self.db.values.update ({"email":self.email, "signal":signal}, {"$push": {"values":value}})
+					print "update"
 				except:
 					traceback.print_exc()
 		

@@ -112,7 +112,7 @@ var posting = $.post( "/run", { source: editor.getValue() } );
 }
 
 
-$("#led").change(function(event) {
+$("#led").submit(function(event) {
 
   event.preventDefault();
 
