@@ -36,7 +36,6 @@
 <script src="static/assets/js/jquery.js"></script>
     <script src="static/assets/js/bootstrap-transition.js"></script>
 	<script src="static/assets/wyliodrin/addrasp.js"></script>
-	<script src="static/assets/wyliodrin/get_prog.js"></script>
 	
 	<script src="static/assets/wyliodrin/names.js"></script>
 	<script src="static/assets/wyliodrin/remrasp.js"></script>
@@ -212,7 +211,7 @@
 			<div class="dropdown">
                   <a href="#" class="btn btn-large btn-success" data-toggle="dropdown">Run on raspberry<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#" onCick="rasp()">Raspberry 1</a></li>
+                    <li><a href="#" id="run_raspy">Raspberry 1</a></li>
                     <li><a href="#">Raspberry 2</a></li>
                     <li><a href="#">Raspberry 3</a></li>
                  
@@ -224,45 +223,31 @@
 
 			  
              
-              <canvas id="myCanvas" width="80" height="400" style="border:1px solid #000000;"></canvas>
+              <canvas id="temperature" width="80" height="400" style="border:1px solid #000000;"></canvas>
 			
-    <canvas id="myLine" width="850" height="400" style="border:1px solid #000000;"></canvas>
+			<canvas id="buttons" width="400" height="400" style="border:1px solid #000000;"></canvas>
+			
+   		<canvas id="series" width="400" height="400" style="border:1px solid #000000;"></canvas>
+   		
+   		<canvas id="light" width="850" height="400" style="border:1px solid #000000;"></canvas>
+   		
+   		<div>
+   			<form id="led" action="send" method="post">
+   				Red: <input type="range" name="red" min="1" max="255">
+   				Green: <input type="range" name="green" min="1" max="255">
+				Blue: <input type="range" name="blue" min="1" max="255">
+				<button type="submit" class="btn">Send</button>
+			</form>
+
+   		</div>
 <script>
     window.onload = function ()
-    {
-	     // Create the Thermometer chart. The arguments are: the canvas ID, the minimum,
-        // the maximum and the indicated value.
-        var thermometer = new RGraph.Thermometer('myCanvas', 0,100,60);
-        
-        // Configure the thermometer chart to look as you want.
-       
-        
-        // Now call the .Draw() method to draw the chart.
-        thermometer.Draw();
-        // The data for the Line chart. Multiple lines are specified as seperate arrays.
-        var data = [10,4,17,50,25,19,20,25,30,29,30,29];
-    
-        // Create the Line chart object. The arguments are the canvas ID and the data array.
-        var line = new RGraph.Line("myLine", data);
-        
-        // The way to specify multiple lines is by giving multiple arrays, like this:
-        // var line = new RGraph.Line("myLine", [4,6,8], [8,4,6], [4,5,3]);
-        
-        // Configure the chart to appear as you wish.
-        line.Set('chart.background.barcolor1', 'white');
-        line.Set('chart.background.barcolor2', 'white');
-        line.Set('chart.background.grid.color', 'rgba(238,238,238,1)');
-        line.Set('chart.colors', ['red']);
-        line.Set('chart.linewidth', 2);
-        line.Set('chart.filled', false);
-        line.Set('chart.hmargin', 5);
-        line.Set('chart.labels', ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
-        line.Set('chart.gutter.left', 40);
-        
-        // Now call the .Draw() method to draw the chart.
-        line.Draw();
+    {        
+    	
     }
 </script>
+
+<script src="static/assets/wyliodrin/get_prog.js"></script>
 
   </div>
 
@@ -361,7 +346,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
 
-
+<script>
+$("#run_raspy").click(function (event)
+{
+	rasp ();
+	event.preventDefault ();
+});
+</script>
     
 
 

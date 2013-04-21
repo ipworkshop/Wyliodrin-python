@@ -2,12 +2,15 @@ from flask import Flask, render_template, request, redirect, session, url_for
 from pymongo import MongoClient
 import hashlib
 import json
+from xmpp import WylioXMPP
 
 SECRET_KEY = "key"
 
 web = Flask (__name__)
 web.config.from_object(__name__)
 web.debug = True
+
+xmpp = dict ()
 
 client = MongoClient ()
 db = client.wyliodrin
@@ -24,7 +27,41 @@ def start():
 		return redirect (url_for ("fluid"))
 	else:
 		return render_template ("start.html")
-	
+
+@web.route ("/values")
+def values():
+	if user_online() != None:
+		email = user_online()
+		signals = db.values.find ({"email":email})
+		values = []
+		for value in signals:
+			del value['_id']
+			values.append (value)
+		return json.dumps (values)
+	else:
+		return ""
+
+@web.route ("/send", methods=['POST'])
+def values():
+	if user_online() != None:
+		email = user_online()
+		if email in xmpp:
+			if "red" in request.form:
+				red = request.form["red"]
+				xmpp[email].send_value ("red", red, "wylio.project@gmail.com/raspy")
+			
+			if "green" in request.form:
+				green = request.form["green"]
+				xmpp[email].send_value ("green", green, "wylio.project@gmail.com/raspy")
+				
+			if "blue" in request.form:
+				blue = request.form["blue"]
+				xmpp[email].send_value ("blue", blue, "wylio.project@gmail.com/raspy")
+		return ""
+	else:
+		return ""
+
+
 @web.route ("/fluid")
 def fluid():
 	if user_online() != None:
@@ -110,15 +147,16 @@ def save():
 		return ""
 
 @web.route ("/run", methods=['POST'])
-def save():
+def run():
 	result = "0"
 	if user_online() != None:
 		email = user_online ()
 		source = request.form["source"];
 		if db.users.update ({"email": email}, {"$set": {"source":source}})!=None:
 			result = "1"
-			
-			# RUN
+			if email in xmpp:
+				db.values.remove ({"email":email})
+				xmpp[email].run_source (source, "wylio.project@gmail.com/raspy")
 		else:
 			result = "0"
 		return json.dumps ({"result":result})	
@@ -136,13 +174,19 @@ def login():
 		if db.users.find ({"email":email, "password": md5pass}).count() > 0:
 			result = "1";
 			session["email"]=email
+			xmpp[email] = WylioXMPP (email, db)
+			xmpp[email].connect ("server@ipworkshop.ro", "raspberrypi")
 			session.modified = True
 	return json.dumps ({"result":result})
 
 @web.route ("/logout")
 def logout ():
 	if "email" in session:		
+		email = session["email"]
 		del session["email"]
+		if email in xmpp:
+			xmpp[email].disconnect ()
+			del xmpp[email]
 	return redirect (url_for ("start"))
 
 if __name__ == '__main__':
