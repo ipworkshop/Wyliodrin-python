@@ -25,7 +25,7 @@ function run ()
 				var gauge = new RGraph.Gauge(info.signal, 0, 255, info.values[info.values.length-1]);
 				
 				// Configure the chart to appear as wished
-				gauge.Set('chart.title', 'Bandwidth');
+				gauge.Set('chart.title', 'Volume');
 				
 				// Now call the .Draw() method to draw the chart.
 				gauge.Draw();
